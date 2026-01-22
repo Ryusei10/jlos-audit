@@ -2,20 +2,24 @@
 
 import Link from "next/link"
 import { ArrowRight, CheckCircle2, ShieldCheck, Sparkles, FileSearch, Handshake, Menu, X } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function Page() {
-  // アニメーション設定
-  const fadeInUp = {
+  // アニメーション設定（型定義を追加してエラーを修正）
+  const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.6, ease: "easeOut" } 
+    }
   }
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -95,14 +99,11 @@ export default function Page() {
 
           {/* CTA Buttons */}
           <motion.div variants={fadeInUp} className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* ▼ ここを修正しました（Messengerリンクを追加） */}
             <Button size="lg" className="h-12 px-8 rounded-full bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90 font-semibold text-base shadow-[0_0_20px_-5px_#D4AF37]" asChild>
               <Link href="https://m.me/61585310624472" target="_blank">
                 無料診断を始める <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
-            
-            {/* 仕組みを見るボタン（とりあえずページ内のProcessへ飛ぶように設定） */}
             <Button size="lg" variant="outline" className="h-12 px-8 rounded-full border-white/10 bg-white/5 text-white hover:bg-white/10" asChild>
               <Link href="#process">
                 仕組みを見る
@@ -178,6 +179,9 @@ export default function Page() {
                   <div className="text-sm text-white/50 mb-2">Safety Score</div>
                   <div className="relative flex items-center justify-center h-24 w-24 rounded-full border-4 border-white/10 mb-4">
                     <span className="text-3xl font-bold text-yellow-500">45</span>
+                    <svg className="absolute inset-0 h-full w-full -rotate-90" viewBox="0 0 100 100">
+                      <circle cx="50" cy="50" r="46" fill="none" stroke="#EAB308" strokeWidth="8" strokeDasharray="280" strokeDashoffset="160" strokeLinecap="round" className="opacity-80" />
+                    </svg>
                   </div>
                   <Button size="sm" className="w-full bg-[#D4AF37] text-black hover:bg-[#D4AF37]/90">
                     Fix Risks
