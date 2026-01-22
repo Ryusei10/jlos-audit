@@ -135,7 +135,7 @@ export default function Page() {
                 </div>
                 <div className="mx-auto flex items-center gap-2 rounded-md bg-black/50 px-3 py-1 text-xs text-white/40 border border-white/5 font-mono">
                   <ShieldCheck className="h-3 w-3" />
-                  jlos-audit-system.v2.4.0
+                  jlos-audit-system.v2.4.1
                 </div>
               </div>
 
